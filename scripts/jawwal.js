@@ -87,13 +87,25 @@ document.addEventListener('DOMContentLoaded', () => {
       baselineBeta = e.beta;
       return;
     }
+  
     const delta = e.beta - baselineBeta;
-    if (!tiltHandled && delta > TILT_THRESHOLD) {
-      tiltHandled = true;
-      nextWord();
-      setTimeout(() => tiltHandled = false, 800);
+  
+    if (!tiltHandled) {
+      if (delta > TILT_THRESHOLD) {
+        // ميل لأعلى = صح
+        tiltHandled = true;
+        correctCount++;  // زيادة العداد
+        nextWord();
+        setTimeout(() => tiltHandled = false, 1000);
+      } else if (delta < -TILT_THRESHOLD) {
+        // ميل لأسفل = تخطي
+        tiltHandled = true;
+        nextWord();
+        setTimeout(() => tiltHandled = false, 1000);
+      }
     }
   }
+  
 
   // بداية دور لاعب
   function runTurn() {

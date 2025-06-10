@@ -82,20 +82,19 @@ const GAMES = [
     description: ''
   },
   {
-    id: 'mafia',
-    name: 'المافيا',
+    id: 'ghomza',
+    name: 'الدخيل',
     minPlayers: 5,
     maxPlayers: 12,
     description: ''
   },
   {
-    id: 'ghomza',
-    name: 'غمزة',
-    minPlayers: 5,
+    id: 'mafia',
+    name: 'المافيا',
+    minPlayers: 6,
     maxPlayers: 12,
     description: ''
   },
-  
 ];
 
 // LocalStorage key for players
