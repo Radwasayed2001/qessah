@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const passCount     = document.getElementById('headsUpCount');
   const gameWord      = document.getElementById('headsUpWord');
   const gameTimer     = document.getElementById('headsUpTimer');
-  const btnCorrect    = document.getElementById('btnCorrect');
-  const btnSkip       = document.getElementById('btnSkip');
 
   const endCount      = document.getElementById('headsUpCountCorrect');
   const nextPlayerBtnJ = document.getElementById('btnNextPlayer');
@@ -131,8 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resetTilt();
     showScreen('headsUpGameScreen');
 
-    // إظهار أزرار ✓ و✗
-    btnCorrect.style.display = btnSkip.style.display = 'inline-block';
 
     // تفعيل مستمع الميل
     window.addEventListener('deviceorientation', onTilt);
@@ -157,20 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
     gameWord.textContent = order[idx++];
   }
 
-  // الإجابة صحيحة
-  btnCorrect.addEventListener('click', () => {
-    correctCount++;
-    nextWord();
-  });
 
-  // تخطي كلمة
-  btnSkip.addEventListener('click', nextWord);
 
   // نهاية الجولة
   function endRound() {
     clearTimersJ();
     window.removeEventListener('deviceorientation', onTilt);
-    btnCorrect.style.display = btnSkip.style.display = 'none';
 
     const name  = playersJawwal[currentPlayerJawwal];
     const score = correctCount * 5;
